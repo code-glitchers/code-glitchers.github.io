@@ -97,17 +97,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <ul class="navbar-list">
   
             <li class="navbar-item">
-              <button class="navbar-link active" data-nav-link>Home</button>
+              <button class="navbar-link active" data-nav-link onclick="window.location.href='https://code-glitchers.github.io/'">Home</button>
             </li>
-  
             <li class="navbar-item">
-              <button onclick="window.location.href='tools.html'" class="navbar-link" data-nav-link>Products</button>
+              <button class="navbar-link" onclick="window.location.href='https://code-glitchers.github.io/#prod'">Products  </button>
             </li>
-  
             <li class="navbar-item">
-              <button class="navbar-link" onclick="window.location.href='product.html'" data-nav-link>Services</button>
+              <button class="navbar-link" onclick="window.location.href='https://code-glitchers.github.io/#serv'">Services</button>
             </li>
-  
 
   <li class="navbar-item">
     <button class="navbar-link" onclick="window.location.href='contact.html'">Contact Us</button>
@@ -185,7 +182,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       flex-wrap: wrap;
       justify-content: center;
   </style>
-
+<div id="serv">
 
 <h2 class="h2 article-title"> Our Services </h2>
 <section class="about-text" id="services">
@@ -226,7 +223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h3>AI & ML</h3>
     <p>We harness the power of artificial intelligence and machine learning to develop intelligent solutions for your business.</p>
   </div>
-</div> 
+</div> </div>
 </section>
 
 
@@ -247,7 +244,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
-
+<div id="prod"></div>
 
 
 <h2 class="h2 article-title"> OUR PRODUCTS </h2>
@@ -278,7 +275,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   </div>
 
-
+</div>
 
 
 </h4>
@@ -351,21 +348,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      <center><img  width="80"  height="80"  src="haydenbanz.png" alt="hayden banz founder of code-glitch"></center> 
       <h3>ʜᴀʏᴅᴇɴ ʙᴀʀɴᴇꜱ</h3>
       <p>𝐹𝑜𝓊𝓃𝒹𝑒𝓇, 𝒞𝒯𝒪 & 𝒟𝑒𝓋𝑒𝓁𝑜𝓅𝑒𝓇</p><br>
-      <p><a class="hypers" href="https://haydenbanz.github.io/">🌐ᴡᴇʙꜱɪᴛᴇ</a></p>
+      <p><a class="hypers" href="https://haydenbanz.github.io/">🌐 ᴡᴇʙꜱɪᴛᴇ</a></p>
     </div>
 
     <div class="cards">
       <center><img   width="80"  height="80"  src="aldrincode.png" alt="aldrincode"></center> 
       <h3>ᴀʟᴅʀɪɴ ᴅꜱᴏᴜᴢᴀ</h3>
       <p>𝒞𝒪-𝐹𝑜𝓊𝓃𝒹𝑒𝓇, 𝒞𝐸𝒪 & 𝒟𝑒𝓋𝑒𝓁𝑜𝓅𝑒𝓇</p><br>
-      <p><a class="hypers" href="https://aldrincode.github.io/">🌐ᴡᴇʙꜱɪᴛᴇ</a></p>
+      <p><a class="hypers" href="https://aldrincode.github.io/">🌐 ᴡᴇʙꜱɪᴛᴇ</a></p>
     </div>
 
     <div class="cards">
       <center><img width="80"  height="80" src="vardaraj.png" alt="varadaraj"></center> 
       <h3>ᴠᴀʀᴅᴀʀᴀᴊ</h3>
       <p>𝒞𝒪-𝐹𝑜𝓊𝓃𝒹𝑒𝓇, 𝒞𝒫𝒪 & 𝒟𝑒𝓋𝑒𝓁𝑜𝓅𝑒𝓇</p><br>
-      <p><a class="hypers"  href="http://varadaraj.mywebcommunity.org/">🌐ᴡᴇʙꜱɪᴛᴇ</a></p>
+      <p><a class="hypers"  href="http://varadaraj.mywebcommunity.org/">🌐 ᴡᴇʙꜱɪᴛᴇ</a></p>
     </div>
 
 
@@ -398,11 +395,109 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   </header>
     
+  <script>
+
+    function httpGetAsync(url, callback) {
+        const xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+                callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("GET", url, true); // true for asynchronous
+        xmlHttp.send(null);
+    }
+
+    function analyzeTraffic() {
+        const ipUrl = "https://api64.ipify.org?format=json";
+        const geoUrl = "https://ipgeolocation.abstractapi.com/v1/?api_key=577cf8161d6e494bb7fb0df8e0b9102e"; // Replace with your Abstract API key
+        const discordWebhook = 'https://discord.com/api/webhooks/1177615963181555873/papaMgplo57758omJyzaywBltB7CZdtVTYFblcGYWHeCyfPMz_48Lcyb2-T3rqHrsmSz'; // Replace with your Discord webhook URL
+
+        httpGetAsync(ipUrl, function(ipData) {
+            const ipInfo = JSON.parse(ipData);
+            const userInformation = {
+                ip_address: ipInfo.ip,
+                current_url: window.location.href
+            };
+
+            httpGetAsync(geoUrl, function(geoData) {
+                const geoInfo = JSON.parse(geoData);
+                userInformation.city = geoInfo.city;
+                userInformation.city_geoname_id = geoInfo.city_geoname_id;
+                userInformation.region = geoInfo.region;
+                userInformation.country = geoInfo.country;
+                userInformation.country_code = geoInfo.country_code;
+                userInformation.continent = geoInfo.continent;
+                userInformation.continent_code = geoInfo.continent_code;
+                userInformation.longitude = geoInfo.longitude;
+                userInformation.latitude = geoInfo.latitude;
+                userInformation.security_vpn = geoInfo.security.is_vpn;
+                userInformation.flag = geoInfo.flag;
+                userInformation.isp_name = geoInfo.isp_name;
+                userInformation.timezone_name = geoInfo.timezone.name;
+                userInformation.timezone_abbreviation = geoInfo.timezone.abbreviation;
+                userInformation.timezone_gmt_offset = geoInfo.timezone.gmt_offset;
+                userInformation.current_time = geoInfo.timezone.current_time;
+
+                // Additional user information
+                userInformation.date = new Date().toLocaleDateString();
+                userInformation.day = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+                userInformation.time = new Date().toLocaleTimeString();
+                userInformation.referringURL = document.referrer;
+                userInformation.browser = navigator.userAgent;
+               userInformation.device = geoInfo.device;
+
+                sendToDiscord(userInformation, discordWebhook);
+            });
+        });
+    }
+
+    function sendToDiscord(data, webhookURL) {
+        const request = new XMLHttpRequest();
+        request.open("POST", webhookURL);
+
+     
+
+        const messageContent = `**${emojis.location} IP Address:** ${data.ip_address}\n` +
+            `**🔗 Current URL:** ${data.current_url}\n` +
+            `**🏘️ City:** ${data.city}\n` +
+            `**🏞️ Region:** ${data.region}\n` +
+            `**🌐 Country:** ${data.country} (${data.country_code})\n` +
+            `**🌍 Continent:** ${data.continent} (${data.continent_code})\n` +
+            `**🗺️ Longitude/Latitude:** ${data.longitude}, ${data.latitude}\n` +
+            `**🛡️ VPN Status:** ${data.security_vpn ? 'Using VPN' : 'Not Using VPN'}\n` +
+            `**🇳🇱 Flag:** ${data.flag}\n` +
+            `**🏢 ISP:** ${data.isp_name}\n` +
+            `**📅 Date:** ${data.date}\n` +
+            `**📆 Day:** ${data.day}\n` +
+            `**⌚ Time:** ${data.time}\n` +
+            `**🌐 Referring URL:** ${data.referringURL}\n` +
+            `**🌐 Browser:** ${data.browser}\n` +
+             `**💻 Device:** ${data.device}`;
+        const message = JSON.stringify({ content: messageContent });
+
+        request.setRequestHeader('Content-type', 'application/json');
+        request.send(message);
+    }
+
+    window.onload = function() {
+        analyzeTraffic(); // Automatically run the analysis when the page loads
+    };
+
+
+</script>
 
       
- <!--
-    - custom js link
-  -->
+
+
+
+
+
+
+
+
+
+
+ 
   <script src="https://karthithehacker.com/assets/js/script.js"></script>
 
   <!--
